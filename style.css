@@ -122,7 +122,7 @@ ul:hover {
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 150, 0.9) 100%
+    rgba(0, 0, 0, 0) 100%
   );
   font-size: 10px;
   opacity: 0;
@@ -133,4 +133,7 @@ ul:hover {
   left: 0;
   right: 0;
   bottom: 0;
+}
+.carousel-item__details:hover {
+  opacity: 1;
 }
