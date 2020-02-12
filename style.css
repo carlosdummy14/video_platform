@@ -74,6 +74,7 @@ ul:hover {
   height: 50px;
   padding: 0px 20px;
   width: 70%;
+  outline: none;
 }
 .input::placeholder {
   color: white;
@@ -154,6 +155,9 @@ ul:hover {
   padding: 60px 68px 40px;
   min-height: 700px;
   width: 300px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 }
 .login__container--form {
   display: flex;
@@ -181,4 +185,79 @@ ul:hover {
   align-items: center;
   font-size: 14px;
   margin-bottom: 10px;
+}
+.login__container--social-media > div > img {
+  width: 30px;
+  margin-right: 10px;
+}
+.login__container--register {
+  font-size: 14px;
+}
+.login__container--register a {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.login__container--register a:hover {
+  text-decoration: underline;
+}
+.register {
+  background: linear-gradient(#3f5c96, #053594);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0px 30px;
+  min-height: calc(100vh - 200px);
+}
+.register__container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 40px;
+  color: white;
+  padding: 60px 68px 40px;
+  min-height: 500px;
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.register__container--form {
+  display: flex;
+  flex-direction: column;
+}
+.register__container--form label {
+  font-size: 14px;
+}
+.register__container--login {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+}
+.register__container--login a {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.register__container--login a:hover {
+  text-decoration: underline;
+}
+.footer {
+  background-color: #053594;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+}
+.footer a {
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding-left: 30px;
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
 }
