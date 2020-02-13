@@ -58,11 +58,23 @@ ul:hover {
   color: white;
 }
 .main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   height: 300px;
+  border-radius: 0px 0px 40px 40px;
 }
 .main__title {
   color: white;
   font-size: 25px;
+}
+.categories__title {
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  padding-left: 30px;
+  width: 100%;
 }
 .input {
   background-color: rgba(255, 255, 255, 0.1);
@@ -79,64 +91,87 @@ ul:hover {
 .input::placeholder {
   color: white;
 }
-
 .carousel {
-  width: 100%;
   overflow: scroll;
-  padding: 30px;
+  padding-left: 30px;
+  width: 100%;
   position: relative;
 }
 .carousel__container {
+  transition: 450ms -webkit-transform;
+  transition: 450ms transform;
+  transition: 450ms transform, 450ms -webkit-transform;
+  font-size: 0;
   white-space: nowrap;
   margin: 70px 0px;
   padding-bottom: 10px;
-}
-.carousel-item {
-  background-color: palevioletred;
-  width: 200px;
-  height: 250px;
-  border-radius: 20px;
-  overflow: hidden;
-  margin-right: 10px;
-  display: inline-block;
-  cursor: pointer;
-  transition: 450ms all;
-  transform-origin: center left;
-  position: relative;
-}
-.carousel-item:hover ~ .carousel-item {
-  transform: translate3d(100px, 0, 0);
 }
 .carousel__container:hover .carousel-item {
   opacity: 0.3;
 }
 .carousel__container:hover .carousel-item:hover {
+  -webkit-transform: scale(1.5);
   transform: scale(1.5);
   opacity: 1;
+}
+.carousel-item {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 250px;
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 450ms all;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+.carousel-item:hover ~ .carousel-item {
+  -webkit-transform: translate3d(100px, 0, 0);
+  transform: translate3d(100px, 0, 0);
 }
 .carousel-item__img {
   width: 200px;
   height: 250px;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 .carousel-item__details {
+  align-items: flex-start;
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.9) 0%,
     rgba(0, 0, 0, 0) 100%
   );
+  bottom: 0;
+  display: flex;
   font-size: 10px;
+  flex-direction: column;
+  justify-content: flex-end;
+  left: 0;
   opacity: 0;
   transition: 450ms opacity;
   padding: 10px;
   position: absolute;
-  top: 0;
-  left: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
 }
-.carousel-item__details:hover {
+.carousel-item__details--img {
+  width: 20px;
+}
+.carousel-item:hover .carousel-item__details {
   opacity: 1;
+}
+.carousel-item__details--title {
+  color: white;
+  margin: 5px 0px 0px 0px;
+}
+.carousel-item__details--subtitle {
+  color: white;
+  font-size: 8px;
+  margin: 3px 0px;
 }
 .login {
   background: linear-gradient(#3f5c96, #053594);
@@ -245,7 +280,7 @@ ul:hover {
   text-decoration: underline;
 }
 .footer {
-  background-color: #053594;
+  background-color: #3f5c96;
   display: flex;
   align-items: center;
   height: 100px;
