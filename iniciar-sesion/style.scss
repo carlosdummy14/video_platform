@@ -1,3 +1,6 @@
+// Variables
+$blanco: white;
+
 * {
   font-family: "Muli", sans-serif;
 }
@@ -7,29 +10,34 @@ body {
   background-color: #3f5c96;
 }
 
+// Herencia
 /* .flex {
   display: flex;
   align-items: center;
 } */
-.header {
+
+// Mixins
+@mixin flex {
   display: flex;
   align-items: center;
+}
+
+.header {
+  // @extend .flex;
+  @include flex;
   background-color: #3f5c96;
   width: 100%;
   height: 80px;
   justify-content: space-between;
 }
-
 .header__img {
   width: 200px;
   margin-top: 10px;
   margin-left: 10px;
 }
-
 .header__menu {
   margin-right: 30px;
 }
-
 .header__menu ul {
   display: none;
   list-style: none;
@@ -39,41 +47,33 @@ body {
   text-align: right;
   margin: 0px 0px 0px -14px;
 }
-
 .header__menu:hover ul,
 ul:hover {
   display: block;
 }
-
 .header__menu li {
   margin: 10px 0px;
 }
-
 .header__menu li a {
   color: white;
   text-decoration: none;
 }
-
 .header__menu li a:hover {
   text-decoration: underline;
 }
-
 .header__menu--profile {
   margin-right: 8px;
   display: flex;
   align-items: center;
 }
-
 .header__menu--profile img {
   margin-right: 8px;
   width: 40px;
 }
-
 .header__menu--profile p {
   margin: 0px;
   color: white;
 }
-
 .main {
   display: flex;
   align-items: center;
@@ -82,12 +82,10 @@ ul:hover {
   height: 300px;
   border-radius: 0px 0px 40px 40px;
 }
-
 .main__title {
   color: white;
   font-size: 25px;
 }
-
 .categories__title {
   color: white;
   font-size: 16px;
@@ -95,7 +93,6 @@ ul:hover {
   padding-left: 30px;
   width: 100%;
 }
-
 .input {
   background-color: rgba(255, 255, 255, 0.1);
   border: 2px solid white;
@@ -108,18 +105,15 @@ ul:hover {
   width: 70%;
   outline: none;
 }
-
 .input::placeholder {
   color: white;
 }
-
 .carousel {
   overflow: scroll;
   padding-left: 30px;
   width: 100%;
   position: relative;
 }
-
 .carousel__container {
   transition: 450ms -webkit-transform;
   transition: 450ms transform;
@@ -129,17 +123,14 @@ ul:hover {
   margin: 70px 0px;
   padding-bottom: 10px;
 }
-
 .carousel__container:hover .carousel-item {
   opacity: 0.3;
 }
-
 .carousel__container:hover .carousel-item:hover {
   -webkit-transform: scale(1.5);
   transform: scale(1.5);
   opacity: 1;
 }
-
 .carousel-item {
   border-radius: 20px;
   overflow: hidden;
@@ -154,22 +145,23 @@ ul:hover {
   -webkit-transform-origin: center left;
   transform-origin: center left;
 }
-
 .carousel-item:hover ~ .carousel-item {
   -webkit-transform: translate3d(100px, 0, 0);
   transform: translate3d(100px, 0, 0);
 }
-
 .carousel-item__img {
   width: 200px;
   height: 250px;
   -o-object-fit: cover;
   object-fit: cover;
 }
-
 .carousel-item__details {
   align-items: flex-start;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
   bottom: 0;
   display: flex;
   font-size: 10px;
@@ -183,26 +175,21 @@ ul:hover {
   right: 0;
   top: 0;
 }
-
 .carousel-item__details--img {
   width: 20px;
 }
-
 .carousel-item:hover .carousel-item__details {
   opacity: 1;
 }
-
 .carousel-item__details--title {
   color: white;
   margin: 5px 0px 0px 0px;
 }
-
 .carousel-item__details--subtitle {
   color: white;
   font-size: 8px;
   margin: 3px 0px;
 }
-
 .login {
   background: linear-gradient(#3f5c96, #053594);
   display: flex;
@@ -212,7 +199,6 @@ ul:hover {
   padding: 0px 30px;
   min-height: calc(100vh - 200px);
 }
-
 .login__container {
   background-color: rgba(255, 255, 255, 0.1);
   border: 2px solid white;
@@ -225,60 +211,49 @@ ul:hover {
   justify-content: space-around;
   flex-direction: column;
 }
-
 .login__container--form {
   display: flex;
   flex-direction: column;
 }
-
 .login__container--form label {
   font-size: 14px;
 }
-
 .login__container--remember-me {
   color: white;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
-
 .login__container--remember-me a {
   color: white;
   font-size: 14px;
   text-decoration: none;
 }
-
 .login__container--remember-me a:hover {
   text-decoration: underline;
 }
-
 .login__container--social-media > div {
   display: flex;
   align-items: center;
   font-size: 14px;
   margin-bottom: 10px;
 }
-
 .login__container--social-media > div > img {
   width: 30px;
   margin-right: 10px;
 }
-
 .login__container--register {
   font-size: 14px;
 }
-
 .login__container--register a {
-  color: white;
+  color: $blanco;
   font-size: 16px;
   font-weight: bold;
   text-decoration: none;
 }
-
 .login__container--register a:hover {
   text-decoration: underline;
 }
-
 .register {
   background: linear-gradient(#3f5c96, #053594);
   display: flex;
@@ -288,7 +263,6 @@ ul:hover {
   padding: 0px 30px;
   min-height: calc(100vh - 200px);
 }
-
 .register__container {
   background-color: rgba(255, 255, 255, 0.1);
   border: 2px solid white;
@@ -301,33 +275,27 @@ ul:hover {
   justify-content: space-around;
   flex-direction: column;
 }
-
 .register__container--form {
   display: flex;
   flex-direction: column;
 }
-
 .register__container--form label {
   font-size: 14px;
 }
-
 .register__container--login {
   font-size: 14px;
   display: flex;
   justify-content: center;
 }
-
 .register__container--login a {
   color: white;
   font-size: 16px;
   font-weight: bold;
   text-decoration: none;
 }
-
 .register__container--login a:hover {
   text-decoration: underline;
 }
-
 .footer {
   background-color: #053594;
   display: flex;
@@ -335,7 +303,6 @@ ul:hover {
   height: 100px;
   width: 100%;
 }
-
 .footer a {
   color: white;
   cursor: pointer;
@@ -343,11 +310,9 @@ ul:hover {
   padding-left: 30px;
   text-decoration: none;
 }
-
 .footer a:hover {
   text-decoration: underline;
 }
-
 .notfound__container {
   width: 100%;
   min-height: calc(100vh - 200px);
@@ -356,7 +321,6 @@ ul:hover {
   align-items: center;
   flex-direction: column;
 }
-
 .notfound__container--title {
   color: white;
   font-size: 120px;
@@ -367,13 +331,11 @@ ul:hover {
   animation-iteration-count: infinite;
   animation-name: pulse;
 }
-
 .notfound__container--text {
   color: white;
   font-size: 16px;
   font-weight: bold;
 }
-
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -398,18 +360,14 @@ ul:hover {
     padding: 0px;
     width: 100%;
   }
-
   .register__container {
     background-color: transparent;
     border: none;
     padding: 0px;
     width: 100%;
   }
-
   .footer {
     align-items: flex-start;
     flex-direction: column;
   }
 }
-
-/*# sourceMappingURL=style.css.map */
