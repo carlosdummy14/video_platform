@@ -8,7 +8,7 @@ class MoviesService {
 
   async getMovie() {
     const movie = await Promise.resolve(moviesMock[0]);
-    return movie || {}; // Se regresa un objejto vacio porque es una sola pelicula
+    return movie || {}; // Se regresa un objeto vacio porque es una sola pelicula
   }
 
   async createMovie() {
