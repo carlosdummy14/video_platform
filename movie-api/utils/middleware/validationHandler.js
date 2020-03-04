@@ -5,7 +5,7 @@ function validate(data, schema) {
   if (!schema.isJoi) {
     schema = joi.object({ ...schema });
   }
-  const { error } = schema.validate(data);
+  const { error } = schema.validate(data, { errors: { stack: true } });
   return error;
 }
 
