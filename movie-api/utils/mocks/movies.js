@@ -20,8 +20,7 @@ const moviesMock = [
       'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     duration: 2061,
     contentRaiting: 'R',
-    source:
-      'http://telegraph.co.uk/nunc/viverra/dapibus/nulla/suscipit/ligula/in.jpg',
+    source: 'http://telegraph.co.uk/nunc/viverra/dapibus/nulla/suscipit/ligula/in.jpg',
     tags: ['Drama', 'Drama|War']
   },
   {
@@ -33,8 +32,7 @@ const moviesMock = [
       'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.',
     duration: 1993,
     contentRaiting: 'PG-13',
-    source:
-      'https://infoseek.co.jp/amet/nunc/viverra/dapibus/nulla/suscipit.jsp',
+    source: 'https://infoseek.co.jp/amet/nunc/viverra/dapibus/nulla/suscipit.jsp',
     tags: ['Action|Thriller']
   },
   {
@@ -47,8 +45,7 @@ const moviesMock = [
       'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.',
     duration: 1909,
     contentRaiting: 'PG',
-    source:
-      'https://springer.com/orci/mauris/lacinia/sapien/quis/libero/nullam.html',
+    source: 'https://springer.com/orci/mauris/lacinia/sapien/quis/libero/nullam.html',
     tags: ['Documentary', 'Drama', 'Musical']
   },
   {
@@ -56,8 +53,7 @@ const moviesMock = [
     title: 'Five Children and It',
     year: 2013,
     cover: 'http://dummyimage.com/196x234.bmp/5fa2dd/ffffff',
-    description:
-      'In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.',
+    description: 'In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.',
     duration: 1999,
     contentRaiting: 'PG',
     source: 'https://wordpress.org/morbi/a.aspx',
@@ -81,8 +77,7 @@ const moviesMock = [
       'Neon Genesis Evangelion: Death & Rebirth (Shin seiki Evangelion Gekijô-ban: Shito shinsei)',
     year: 2002,
     cover: 'http://dummyimage.com/132x157.bmp/5fa2dd/ffffff',
-    description:
-      'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.',
+    description: 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.',
     duration: 2059,
     contentRaiting: 'PG',
     source: 'https://bravesites.com/vehicula.aspx',
@@ -98,12 +93,7 @@ const moviesMock = [
     duration: 1926,
     contentRaiting: 'NC-17',
     source: 'https://123-reg.co.uk/eu/felis/fusce/posuere.jpg',
-    tags: [
-      'Romance|Western',
-      'Sci-Fi|Thriller',
-      'Comedy|Drama',
-      'Action|Sci-Fi|War'
-    ]
+    tags: ['Romance|Western', 'Sci-Fi|Thriller', 'Comedy|Drama', 'Action|Sci-Fi|War']
   },
   {
     id: '37b3f433-6e78-487f-a788-68322c576e91',
@@ -127,14 +117,28 @@ const moviesMock = [
     duration: 2017,
     contentRaiting: 'G',
     source: 'https://boston.com/venenatis/non/sodales/sed/tincidunt/eu.aspx',
-    tags: [
-      'Drama|Romance',
-      'Thriller',
-      'Action|Romance|Thriller',
-      'Drama',
-      'Drama'
-    ]
+    tags: ['Drama|Romance', 'Thriller', 'Action|Romance|Thriller', 'Drama', 'Drama']
   }
 ];
 
-module.exports = { moviesMock };
+// Utilidad para crear peliculas filtradas
+function filteredMoviesMock(tag) {
+  return moviesMock.filter(movie => movie.tags.includes(tag));
+}
+
+// Mock de los servicios
+class MoviesServiceMock {
+  async getMovies() {
+    return Promise.resolve(moviesMock);
+  }
+
+  async createMovie() {
+    return Promise.resolve(moviesMock[0]);
+  }
+}
+
+module.exports = {
+  moviesMock,
+  filteredMoviesMock,
+  MoviesServiceMock
+};
