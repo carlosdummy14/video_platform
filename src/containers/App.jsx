@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
@@ -8,35 +8,50 @@ import Footer from '../components/Footer';
 
 import '../assets/styles/App.scss';
 
-const App = () => (
-  <div className='App'>
-    <Header />
-    <Search />
+const App = () => {
+  // Definimos videos como estado y setVideos para modificar ese estado
+  const [videos, setVideos] = useState([]);
 
-    <Categories title='Mi lista'>
-      <Carousel>
-        <CarouselItem />
-        <CarouselItem />
-        <CarouselItem />
-        <CarouselItem />
-      </Carousel>
-    </Categories>
+  // Logica de donde se obtendra los datos, recibimos la api, la convertimos en jason
+  // se la pasamos al estado.
+  useEffect(() => {
+    fetch('http://localhost:3000/initialState')
+      .then(response => response.json())
+      .then(data => setVideos(data));
+  }, []);
 
-    <Categories title='Tendencias'>
-      <Carousel>
-        <CarouselItem />
-        <CarouselItem />
-      </Carousel>
-    </Categories>
+  console.log(videos);
 
-    <Categories title='Originales'>
-      <Carousel>
-        <CarouselItem />
-      </Carousel>
-    </Categories>
+  return (
+    <div className='App'>
+      <Header />
+      <Search />
 
-    <Footer />
-  </div>
-);
+      <Categories title='Mi lista'>
+        <Carousel>
+          <CarouselItem />
+          <CarouselItem />
+          <CarouselItem />
+          <CarouselItem />
+        </Carousel>
+      </Categories>
+
+      <Categories title='Tendencias'>
+        <Carousel>
+          <CarouselItem />
+          <CarouselItem />
+        </Carousel>
+      </Categories>
+
+      <Categories title='Originales'>
+        <Carousel>
+          <CarouselItem />
+        </Carousel>
+      </Categories>
+
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
