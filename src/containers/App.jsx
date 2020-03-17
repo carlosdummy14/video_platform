@@ -10,42 +10,46 @@ import '../assets/styles/App.scss';
 
 const App = () => {
   // Definimos videos como estado y setVideos para modificar ese estado
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState({
+    mylist: [],
+    trends: [],
+    originals: [],
+  });
 
   // Logica de donde se obtendra los datos, recibimos la api, la convertimos en jason
   // se la pasamos al estado.
   useEffect(() => {
-    fetch('http://localhost:3000/initialState')
+    fetch('http://localhost:3030/initialState')
       .then(response => response.json())
       .then(data => setVideos(data));
   }, []);
-
-  console.log(videos);
 
   return (
     <div className='App'>
       <Header />
       <Search />
 
-      <Categories title='Mi lista'>
-        <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-        </Carousel>
-      </Categories>
+      {videos.mylist.length > 0 && (
+        <Categories title='Mi lista'>
+          <Carousel>
+            <CarouselItem />
+          </Carousel>
+        </Categories>
+      )}
 
       <Categories title='Tendencias'>
         <Carousel>
-          <CarouselItem />
-          <CarouselItem />
+          {videos.trends.map(item => (
+            <CarouselItem key={item.id} {...item} />
+          ))}
         </Carousel>
       </Categories>
 
       <Categories title='Originales'>
         <Carousel>
-          <CarouselItem />
+          {videos.originals.map(item => (
+            <CarouselItem key={item.id} {...item} />
+          ))}
         </Carousel>
       </Categories>
 
