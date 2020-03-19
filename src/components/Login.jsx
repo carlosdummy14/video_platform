@@ -14,7 +14,7 @@ const Login = () => (
           Iniciar sesión
         </button>
         <div className='login__container--remember-me'>
-          <label>
+          <label htmlFor='cbox1'>
             <input type='checkbox' id='cbox1' value='first_checkbox' />
             Recuérdame
           </label>
@@ -23,10 +23,12 @@ const Login = () => (
       </form>
       <section className='login__container--social-media'>
         <div>
-          <img src={googleIcon} alt={googleIcon} /> Inicia sesión con Google
+          <img src={googleIcon} alt={googleIcon} />
+          Inicia sesión con Google
         </div>
         <div>
-          <img src={twitterIcon} alt={twitterIcon} /> Inicia sesión con Twitter
+          <img src={twitterIcon} alt={twitterIcon} />
+          Inicia sesión con Twitter
         </div>
       </section>
       <p className='login__container--register'>
