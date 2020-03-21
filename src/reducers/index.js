@@ -1,6 +1,12 @@
 const reducer = (state, action) => {
+  let isInList = [];
+
   switch (action.type) {
     case 'SET_FAVORITE':
+      isInList = state.myList.filter(item => item.id === action.payload.id);
+      if (isInList.length) {
+        return state;
+      }
       return {
         ...state,
         myList: [...state.myList, action.payload],
