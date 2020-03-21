@@ -3,7 +3,7 @@ const reducer = (state, action) => {
     case 'SET_FAVORITE':
       return {
         ...state,
-        milist: [...state.milist, action.payload],
+        myList: [...state.myList, action.payload],
       };
     default:
       return state;
