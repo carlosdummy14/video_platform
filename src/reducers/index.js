@@ -26,6 +26,12 @@ const reducer = (state, action) => {
         ...state,
         user: action.payload,
       };
+    case 'REGISTER_REQUEST':
+      console.log('reducer register request');
+      return {
+        ...state,
+        user: action.payload,
+      };
     default:
       return state;
   }
