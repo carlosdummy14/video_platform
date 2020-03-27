@@ -48,7 +48,7 @@ app.get('*', (req, res) => {
   `);
 });
 
-app.listen(PORT, err => {
+app.listen(PORT, (err) => {
   if (err) console.log(err);
   else console.log(`Server running on port ${PORT}`);
 });
