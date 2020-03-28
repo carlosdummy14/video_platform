@@ -11,6 +11,7 @@ import { StaticRouter } from 'react-router-dom';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import reducer from '../frontend/reducers';
 import initialState from '../frontend/initialState';
+import Layout from '../frontend/components/Layout';
 
 dotenv.config();
 
@@ -62,7 +63,7 @@ const renderApp = (req, res) => {
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={{}}>
-        {renderRoutes(serverRoutes)}
+        <Layout>{renderRoutes(serverRoutes)}</Layout>
       </StaticRouter>
     </Provider>,
   );
