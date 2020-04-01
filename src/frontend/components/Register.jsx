@@ -4,21 +4,21 @@ import { connect } from 'react-redux';
 import { registerRequest } from '../actions';
 import '../assets/styles/components/Register.scss';
 
-const Register = props => {
+const Register = (props) => {
   const [form, setValues] = useState({
     email: '',
     name: '',
     password: '',
   });
 
-  const handleInput = event => {
+  const handleInput = (event) => {
     setValues({
       ...form,
       [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     props.registerRequest(form);
     props.history.push('/');

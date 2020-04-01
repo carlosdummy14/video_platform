@@ -2,7 +2,7 @@ const reducer = (state, action) => {
   let isInList = [];
   switch (action.type) {
     case 'SET_FAVORITE':
-      isInList = state.myList.filter(item => item.id === action.payload.id);
+      isInList = state.myList.filter((item) => item.id === action.payload.id);
       if (isInList.length) {
         return state;
       }
@@ -13,7 +13,7 @@ const reducer = (state, action) => {
     case 'DELETE_FAVORITE':
       return {
         ...state,
-        myList: state.myList.filter(items => items.id !== action.payload),
+        myList: state.myList.filter((items) => items.id !== action.payload),
       };
     case 'LOGIN_REQUEST':
       return {
@@ -34,8 +34,8 @@ const reducer = (state, action) => {
       return {
         ...state,
         playing:
-          state.trends.find(item => item.id === Number(action.payload)) ||
-          state.originals.find(item => item.id === Number(action.payload)) ||
+          state.trends.find((item) => item.id === Number(action.payload)) ||
+          state.originals.find((item) => item.id === Number(action.payload)) ||
           [],
       };
     case 'SEARCHING_VIDEO':
@@ -49,7 +49,7 @@ const reducer = (state, action) => {
         ...state,
         searchList: state.trends
           .concat(state.originals)
-          .filter(item => item.title.toLowerCase().includes(action.payload.toLowerCase())),
+          .filter((item) => item.title.toLowerCase().includes(action.payload.toLowerCase())),
       };
     default:
       return state;

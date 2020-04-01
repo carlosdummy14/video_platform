@@ -8,12 +8,12 @@ import '../assets/styles/components/Header.scss';
 import logo from '../assets/static/logo-platzi-video-BW2.png';
 import userIcon from '../assets/static/user-icon1.png';
 
-const Header = props => {
+const Header = (props) => {
   const { user } = props;
   //Con esto sabemos cuantos elementos tiene el objeto user
   const hasUser = Object.keys(user).length > 0;
 
-  const handleLogout = event => {
+  const handleLogout = (event) => {
     props.logoutRequest({});
   };
   return (
@@ -57,7 +57,7 @@ Header.prototype = {
   user: PropTypes.object,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     user: state.user,
   };

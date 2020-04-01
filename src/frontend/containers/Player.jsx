@@ -4,8 +4,8 @@ import { Redirect } from 'react-router-dom';
 import { getVideoSource } from '../actions';
 import '../assets/styles/components/Player.scss';
 
-const Player = props => {
-  const { id } = props.match.params;
+const Player = ({ match }) => {
+  const { id } = match.params;
   const { playing } = props;
   const hasPlaying = Object.keys(playing).length > 0;
 
@@ -33,7 +33,7 @@ const Player = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     playing: state.playing,
   };

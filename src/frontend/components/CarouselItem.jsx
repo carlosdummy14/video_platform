@@ -8,7 +8,7 @@ import playIcon from '../assets/static/play-icon.png';
 import plusIcon from '../assets/static/plus-icon.png';
 import removeIcon from '../assets/static/remove-icon.png';
 
-const CarouselItem = props => {
+const CarouselItem = (props) => {
   const { id, cover, title, year, contentRating, duration, isList } = props;
   const handleSetFavorite = () => {
     props.setFavorite({
@@ -21,7 +21,7 @@ const CarouselItem = props => {
     });
   };
 
-  const handleDeleteFavorite = itemId => {
+  const handleDeleteFavorite = (itemId) => {
     props.deleteFavorite(itemId);
   };
   return (

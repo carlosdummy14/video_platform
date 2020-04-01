@@ -6,19 +6,19 @@ import googleIcon from '../assets/static/google-icon.png';
 import twitterIcon from '../assets/static/twitter-icon.png';
 import '../assets/styles/components/Login.scss';
 
-const Login = props => {
+const Login = (props) => {
   const [form, setValues] = useState({
     email: '',
   });
 
-  const handleInput = event => {
+  const handleInput = (event) => {
     setValues({
       ...form,
       [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     props.loginRequest(form);
     props.history.push('/');
@@ -65,7 +65,9 @@ const Login = props => {
           </div>
         </section>
         <p className='login__container--register'>
-          No tienes ninguna cuenta <Link to='/register'>Regístrate</Link>
+          No tienes ninguna cuenta
+          {' '}
+          <Link to='/register'>Regístrate</Link>
         </p>
       </section>
     </section>

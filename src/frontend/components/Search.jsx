@@ -9,7 +9,7 @@ const Search = ({ isHome, searchingVideo }) => {
     isHome,
   });
 
-  const handleSearch = event => {
+  const handleSearch = (event) => {
     searchingVideo(event.target.value);
   };
 
