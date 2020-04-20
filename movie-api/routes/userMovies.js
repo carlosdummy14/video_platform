@@ -9,11 +9,11 @@ const { createUserMovieSchema } = require('../utils/schemas/userMovies');
 
 function userMoviesApi(app) {
   const router = express.Router();
-  app.user('api/user-movies', router);
+  app.use('api/user-movies', router);
 
   const userMoviesService = new UserMoviesService();
 
-  router.get('/', validationHandler({ userId: userIdSchema }), 'query  ', async function(
+  router.get('/', validationHandler({ userId: userIdSchema }, 'query'), async function(
     req,
     res,
     next

@@ -18,7 +18,7 @@ passport.use(
         const user = userService.getUser({ email: tokenPayload.email });
 
         if (!user) {
-          return cb(boom.unauthorized, false);
+          return cb(boom.unauthorized(), false);
         }
 
         delete user.password;
