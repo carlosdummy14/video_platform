@@ -41,6 +41,16 @@ app.post('/auth/sign-in', async function (req, res, next) {
           secure: !config.dev,
         });
         //    masAge: rememberMe ? THIRTY_DAYS_IN_SEC : TWO_HOURS_IN_SEC,
+        // if (!config.dev) {
+        //   res.cookie('token', token, {
+        //     httpOnly: true,
+        //     secure: true,
+        //   });
+        // } else {
+        //   res.cookie('token', token, {
+        //     withCredentials: true,
+        //   });
+        // }
 
         res.status(200).json(user);
       });
@@ -75,18 +85,20 @@ app.post('/user-movies', async function (req, res, next) {
     const { body: userMovie } = req;
     const { token } = req.cookies;
 
+    console.log('*** Entre Aqui *** \n' + `${config.apiUrl}/api/user-movies`);
     const { data, status } = await axios({
       url: `${config.apiUrl}/api/user-movies`,
       headers: { Authorization: `Bearer ${token}` },
       method: 'post',
       data: userMovie,
+      withCredentials: true,
     });
 
     if (status !== 201) {
       return next(boom.badImplementation());
     }
 
-    res.status(200).json(data);
+    res.status(201).json(data);
   } catch (error) {
     next(error);
   }
