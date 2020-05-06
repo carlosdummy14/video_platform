@@ -14,7 +14,7 @@ require('../utils/auth/strategies/jwt');
 
 function userMoviesApi(app) {
   const router = express.Router();
-  app.use('api/user-movies', router);
+  app.use('/api/user-movies', router);
 
   const userMoviesService = new UserMoviesService();
 
@@ -43,22 +43,23 @@ function userMoviesApi(app) {
     '/',
     passport.authenticate('jwt', { session: false }),
     scopesValidationHandler(['create:user-movies']),
-    validationHandler(createUserMovieSchema, async function(req, res, next) {
+    validationHandler(createUserMovieSchema),
+    async function(req, res, next) {
       const { body: userMovie } = req;
 
       try {
-        const createUserMovieId = await userMoviesService.createUserMovie({
+        const createdUserMovieId = await userMoviesService.createUserMovie({
           userMovie
         });
 
         res.status(201).json({
-          data: createUserMovieId,
+          data: createdUserMovieId,
           message: 'user movie created'
         });
-      } catch (error) {
-        next(error);
+      } catch (err) {
+        next(err);
       }
-    })
+    }
   );
 
   router.delete(
@@ -70,7 +71,7 @@ function userMoviesApi(app) {
       const { userMovieId } = req.params;
 
       try {
-        const deletedUserMovieId = await userMoviesService.deleteUserMovie(userMovieId);
+        const deletedUserMovieId = await userMoviesService.deleteUserMovie({ userMovieId });
 
         res.status(200).json({
           data: deletedUserMovieId,
