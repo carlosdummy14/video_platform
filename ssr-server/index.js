@@ -85,13 +85,11 @@ app.post('/user-movies', async function (req, res, next) {
     const { body: userMovie } = req;
     const { token } = req.cookies;
 
-    console.log('*** Entre Aqui *** \n' + `${config.apiUrl}/api/user-movies`);
     const { data, status } = await axios({
       url: `${config.apiUrl}/api/user-movies`,
       headers: { Authorization: `Bearer ${token}` },
       method: 'post',
       data: userMovie,
-      withCredentials: true,
     });
 
     if (status !== 201) {
@@ -100,6 +98,7 @@ app.post('/user-movies', async function (req, res, next) {
 
     res.status(201).json(data);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 });
@@ -109,6 +108,7 @@ app.delete('/user-movies/:userMovieId', async function (req, res, next) {
     const { userMovieId } = req.params;
     const { token } = req.cookies;
 
+    console.log('*** Entre Aqui Delete *** \n' + `${config.apiUrl}/api/user-movies`);
     const { data, status } = await axios({
       url: `${config.apiUrl}/api/user-movies/${userMovieId}`,
       headers: { Authorization: `Bearer ${token}` },
