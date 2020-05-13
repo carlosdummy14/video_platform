@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet ');
 const app = express();
 
 const { config } = require('./config/index');
@@ -14,6 +15,7 @@ const notFoundHandler = require('./utils/middleware/notFoundHandler');
 // Middlewares de inicio
 // Body Parser Este middleware es para que las rutas sepan interpretar el formato json cuando se les envie
 app.use(express.json());
+app.use(helmet());
 
 // rutas
 authApi(app);
