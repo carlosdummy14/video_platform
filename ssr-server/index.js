@@ -1,5 +1,6 @@
 const express = require('express');
 const passport = require('passport');
+const session = require('express-session');
 const boom = require('@hapi/boom');
 const cookieParser = require('cookie-parser');
 const axios = require('axios');
@@ -11,6 +12,9 @@ const app = express();
 // body parser
 app.use(express.json());
 app.use(cookieParser());
+app.use(session({ secret: config.sessionSecret }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Basic Strategie
 require('./utils/auth/strategies/basic');
@@ -18,8 +22,11 @@ require('./utils/auth/strategies/basic');
 // OAuth strategy
 require('./utils/auth/strategies/oauth');
 
-// OAuth strategy
+// Google strategy
 require('./utils/auth/strategies/google');
+
+// Twitter strategy
+require('./utils/auth/strategies/twitter');
 
 // Tiempo en segundos
 const THIRTY_DAYS_IN_SEC = 2592000;
@@ -166,6 +173,27 @@ app.get(
 );
 
 app.get('/auth/google/callback', passport.authenticate('google', { session: false }), function (
+  req,
+  res,
+  next,
+) {
+  if (!req.user) {
+    next(boom.unauthorized());
+  }
+
+  const { token, ...user } = req.user;
+
+  res.cookie('token', token, {
+    httpOnly: !config.dev,
+    secure: !config.dev,
+  });
+
+  res.status(200).json(user);
+});
+
+app.get('/auth/twitter', passport.authenticate('twitter'));
+
+app.get('/auth/twitter/callback', passport.authenticate('twitter', { session: false }), function (
   req,
   res,
   next,
